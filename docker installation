@@ -1,0 +1,83 @@
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo apt-key fingerprint 0EBFCD88
+sudo add-apt-repository    "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo apt-get update
+sudo apt-get install docker-ce 
+check this 
+sudo apt-get install -qy docker.io
+or 
+1.apt-cache madison docker-ce
+2.sudo apt-get install docker-ce=<VERSION>
+
+sudo docker run hello-world<===for test run hello-world container 
+docker start <name |id>
+docker stop <name |id >
+
+sudo groupadd docker
+sudo usermod -aG docker $USER
+sudo chown -R $USER .<<==with out using  sudo
+
+sudo chown rabi:docker /var/run/docker.sock <=== change as ur user then u can run as non sudo mode
+sudo chown -R rabi:docker docker
+
+docker port <docker name> <<=port ocopy by docker container
+
+docker commit c3f279d17e0a  svendowideit/testimage:version3   (c3f279d17e0a is docker ps object)
+
+
+sudo docker inspect master |grep IP  <<====checkIP address
+sudo docker inspect -f '{{.NetworkSettings.Networks.bridge.IPAddress}}' jenkins
+
+
+sudo apt-get purge docker-ce <==uninstall 
+sudo rm -rf /var/lib/docker <==remove docker
+sudo rm /usr/local/bin/docker-compose <==docker compose uninstall
+
+docker docker-subcommand --help <<==specific commands options	
+
+sudo docker search ubuntu <<= ubuntu search
+
+sudo docker pull ubuntu <<==docker install
+
+sudo docker run ubuntu
+
+sudo docker images <<==images present in docker
+
+docker images -f dangling=true  <<====no longer serve a purpose and consume disk space
+
+sudo docker run -it ubuntu <<== start ubuntu in docker 
+
+etlspark usercreate
+
+cat /etc/*release <<== check ubuntu version
+
+addgroup datapipeline
+adduser -ingroup datapipeline etlspark
+
+
+docker rmi  <IMAGE ID> <<==Remove Docker Images
+docker rm  <CONTAINER ID> <<==Remove Docker Containers
+docker stop $(docker ps -a -q) <==Stop All Containers
+docker rm $(docker ps -a -q)  <==Remove All Containers
+
+sudo docker cp etlmaster_without_karaf/ vibrant_thompson:/home/etlspark/ <<== only one file will be transfer not * 
+
+ sudo docker save ubuntu30 > ubuntu30.tar.gz
+ 
+sudo  docker load -i ubuntu30.tar.gz
+
+sudo docker run -t -i <images name> <path> <<<==== to go inside docker default bash use 
+
+docker run -it --privileged=true <<= if Failed to allocate manager object, freezing. error comes
+
+docker inspect --format='{{.NetworkSettings.IPAddress}}' amb0 <== check ip address
+
+docker network rm <name > <==remove docker network
+
+
+ sudo docker build -t rabi/nginx . <<==check out docker and create docker image
+
+sudo docker run  -d -p 8080:80  rabi/nginx  <<===before go have 2 start container 
+ sudo docker exec -it  <running docker container id> /bin/bash   <<<<======move in side docker container
+
+
