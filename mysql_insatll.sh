@@ -37,7 +37,7 @@ awk -F : '{ print($6 "/.mysql_history"); }' /etc/passwd | xargs -r -d '\n' -- su
 
 ######copy db
 
-mysqldump --host=192.168.10.5 --port=3306 --user=admin -p etl > [database name].sql
+mysqldump --host=<IP-address> --port=3306 --user=admin -p etl > [database name].sql
 
 
 ####insert db
